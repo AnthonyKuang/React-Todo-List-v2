@@ -1,1 +1,1 @@
-An improved react todo-list with filters and local storage.
+An improved react todo-list using hooks, with filters and local storage.
