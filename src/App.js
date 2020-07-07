@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import Todo from "./components/Todo";
 import Form from "./components/Form";
@@ -15,6 +15,17 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter] = useState('All');
+
+  useEffect(() => {
+    const json = JSON.stringify(tasks);
+    localStorage.setItem('tasks', json);
+  }, [tasks])
+
+  useEffect(() => {
+    const taskJSON = localStorage.getItem('tasks');
+    const taskArray = JSON.parse(taskJSON);
+    console.log(taskArray);
+  })
 
   const taskList = tasks
     .filter(FILTER_MAP[filter])
