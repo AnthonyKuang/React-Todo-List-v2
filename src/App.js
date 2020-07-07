@@ -25,7 +25,7 @@ function App(props) {
     const taskJSON = localStorage.getItem('tasks');
     const taskArray = JSON.parse(taskJSON);
     console.log(taskArray);
-  })
+  }, [])
 
   const taskList = tasks
     .filter(FILTER_MAP[filter])
